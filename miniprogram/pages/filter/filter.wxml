@@ -1,0 +1,8 @@
+<!--miniprogram/pages/filter/filter.wxml-->
+<view class="filter-page">
+<e-checker
+  label='套餐'
+  theme='open'
+  catchselect='testTap'
+  list='{{ [ { id: "0", text: "官方标准套餐" }, { id: "1", text: "套餐1" }, { id: "2", text: "套餐2" }, { id: "3", text: "套餐3" }, { id: "4", text: "套餐4" } ] }}' />
+</view>

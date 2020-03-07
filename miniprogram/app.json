@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my",
+    "pages/test/test",
+    "pages/filter/filter"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#161825",
+    "navigationBarTitleText": "自由视点",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#8E8E8E",
+    "selectedColor": "#7FEDD8",
+    "backgroundColor": "#101119",
+    "list": [
+      {
+        "iconPath": "/images/icon_video_1.png",
+        "selectedIconPath": "/images/icon_video_2.png",
+        "pagePath": "pages/index/index",
+        "text": "视频"
+      },
+      {
+        "iconPath": "/images/icon_my_1.png",
+        "selectedIconPath": "/images/icon_my_2.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

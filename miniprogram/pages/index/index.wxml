@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view class="index-page">
+  <e-search
+    catchonsearch='testTap'
+    bgColor='#fff'
+    width='520'
+    buttonText=''
+    placeholder='请输入搜索内容'
+    radius='10'
+    bgColor='#101119'>
+  </e-search>
+
+  <e-enhance-view
+    bgColor=''
+    height='100'
+    width=''
+    padding='0 53rpx'
+    type='betweenCenter'
+    cus='top-bar'>
+    <view class="top-bar-left">
+      <view class="top-bar-item" data-index="{{0}}" catchtap="onTopBarTap">
+        <text class="top-bar-text {{topBarSelected === 0 && 'top-bar-text-select'}}">最热</text>
+        <image class="top-bar-icon" src="{{ topBarSelected === 0 ? '/images/icon_zuixin_2.png' : '/images/icon_zuixin.png' }}"></image>
+      </view>
+      <view class="top-bar-item" data-index="{{1}}" catchtap="onTopBarTap">
+        <text class="top-bar-text {{topBarSelected === 1 && 'top-bar-text-select'}}">最新</text>
+        <image class="top-bar-icon" src="{{ topBarSelected === 1 ? '/images/icon_zuixin_2.png' : '/images/icon_zuixin.png' }}"></image>
+      </view>
+    </view>
+    <view class="top-bar-item">
+        <text class="top-bar-text">筛选</text>
+        <image class="top-bar-icon" src="/images/icon_shuaixuan.png"></image>
+      </view>
+  </e-enhance-view>
+
+  <scroll-view class="list">
+    <view class="list-item">
+      <image class="list-item-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583571783049&di=74abca9ad5aa245b449096fd33568807&imgtype=0&src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D1179872664%2C290201490%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D1280%26h%3D854"></image>
+      <text class="list-item-tit">APEX2020首发体验：无开孔一体化手机离我们还有多远</text>
+      <e-enhance-view type='betweenCenter'>
+        <view class="list-item-left">
+          <e-enhance-text
+            icon='/images/icon_watch.png'
+            iconSize='26'
+            textFontSize='24'
+            text='10'
+            textColor='#5E5E5E'
+            cus='list-item-left-item'/>
+          <e-enhance-text
+            icon='/images/icon_start_1.png'
+            iconSize='26'
+            textFontSize='24'
+            text='16'
+            textColor='#5E5E5E' />
+        </view>
+        <view class="list-item-right">
+          更多视频
+          <image class="list-item-icon" src="/images/icon_more.png"></image>
+        </view>
+      </e-enhance-view>
+    </view>
+  </scroll-view>
+</view>

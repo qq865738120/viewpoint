@@ -1,0 +1,11 @@
+/* components/gesture/gesture.wxss */
+
+.cover-view {
+  color: red;
+  width: 750rpx;
+  height: 500rpx;
+  background-color: burlywood;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

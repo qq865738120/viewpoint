@@ -1,0 +1,76 @@
+/**index.wxss**/
+
+.index-page {
+  height: 100%;
+  padding-top: 20rpx;
+}
+
+.top-bar {
+  border-bottom: 1rpx solid #2c2e3b;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 220rpx;
+}
+
+.top-bar-item {
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  color: rgba(169, 169, 169, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar-text-select {
+  color: white;
+}
+
+.top-bar-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 6rpx;
+}
+
+.list {
+}
+
+.list-item {
+  margin: 0 30rpx;
+  padding: 36rpx 0;
+  border-bottom: 1rpx solid #2C2E3B;
+}
+
+.list-item-img {
+  width: 690rpx;
+  height: 386rpx;
+  border-radius: 10rpx;
+}
+
+.list-item-tit {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  color: rgba(255, 255, 255, 1);
+  line-height: 42rpx;
+}
+
+.list-item-left-item {
+  margin-right: 18rpx;
+}
+
+.list-item-right {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  color: rgba(102, 102, 102, 1);
+  display: flex;
+  align-items: center;
+}
+
+.list-item-icon {
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 10rpx
+}

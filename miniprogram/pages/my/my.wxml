@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="index-page">
+  <e-search
+    catchonsearch='testTap'
+    bgColor='#fff'
+    width='520'
+    buttonText=''
+    placeholder='请输入搜索内容'
+    radius='10'
+    bgColor='#101119'>
+  </e-search>
+</view>
