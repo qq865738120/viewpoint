@@ -24,11 +24,23 @@ Component({
       type: String,
       value: '24'
     },
+    itemColor: {
+      type: String,
+      value: '#333333'
+    },
+    itemSelectedColor: {
+      type: String,
+      value: '#fffff'
+    },
     selected: {
       type: String,
       observer: function (newVal) {
         this.setData({ mselected: newVal, hadSelected: true })
       }
+    },
+    color: {
+      type: String,
+      value: '#F5F5F5'
     },
     selectColor: {
       type: String,
@@ -42,7 +54,7 @@ Component({
         const themeColor = this.data.themeColor;
         console.log('newVal', newVal)
         const themes = {
-          default: `background-color: ${selectColor}; color: white;`,
+          default: `background-color: ${selectColor}; color: ${itemSelectedColor};`,
           open: `border: 1px solid ${selectColor}; color: ${selectColor}; background-color: ${themeColor};`
         }
         this.setData({
@@ -72,7 +84,8 @@ Component({
    */
   methods: {
     onTap(e) {
-      this.setData({ mselected: this.data.list[e.currentTarget.dataset.id].id })
+      const item = (this.data.list || []).filter(item => item.id === e.currentTarget.dataset.id);
+      this.setData({ mselected: item[0].id })
       this.triggerEvent('select', e.currentTarget.dataset, { bubbles: true });
     }
   },

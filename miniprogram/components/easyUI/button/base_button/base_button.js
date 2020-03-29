@@ -89,6 +89,10 @@ Component({
     spacing: {
       type: String,
       value: '18'
+    },
+    isLoading: {
+      type: Boolean,
+      value: false
     }
   },
 

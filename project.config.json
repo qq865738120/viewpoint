@@ -9,7 +9,7 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": false,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -24,7 +24,7 @@
 	},
 	"appid": "wx7f2178d6fb62eef4",
 	"projectname": "viewpoint",
-	"libVersion": "2.10.2",
+	"libVersion": "2.10.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
@@ -70,6 +70,34 @@
 					"pathName": "pages/filter/filter",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/favorite/favorite",
+					"pathName": "pages/favorite/favorite",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/more/more扫码",
+					"pathName": "pages/more/more",
+					"query": "scene=1",
+					"scene": 1012
+				},
+				{
+					"id": 6,
+					"name": "pages/room/room扫码",
+					"pathName": "pages/room/room",
+					"query": "scene=2",
+					"scene": 1011
 				}
 			]
 		}

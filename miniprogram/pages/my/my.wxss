@@ -1,6 +1,69 @@
 /**index.wxss**/
 
-.index-page {
-  height: 100%;
-  padding-top: 20rpx;
+.my-page {
+  position: relative;
+}
+
+.bg-img {
+  width: 750rpx;
+  height: 334rpx;
+}
+
+.avatar {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 208rpx;
+  left: 32rpx;
+  border: 8rpx solid rgba(0, 0, 0, 1);
+  overflow: hidden;
+}
+
+.nick-name {
+  font-size: 48rpx;
+  font-family: PingFang SC;
+  color: rgba(255, 255, 255, 1);
+  margin: 80rpx 32rpx 0;
+}
+
+.list {
+  margin: 30rpx 0 88rpx;
+  padding: 0 30rpx;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #2c2e3b;
+  padding: 34rpx 0;
+}
+
+.list-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.list-item-left-icon {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.list-item-left-text {
+  font-size: 32rpx;
+  font-family: PingFang SC;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 15rpx;
+}
+
+.logo-warp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 246rpx;
+  height: 78rpx;
 }

@@ -1,7 +1,9 @@
-//index.js
+/**
+ * 我的页
+ */
 import regeneratorRuntime from 'regenerator-runtime'
 
-const app = getApp()
+const { wxPro } = getApp()
 
 import WxTouchEvent from "wx-touch-event";
 
@@ -12,28 +14,21 @@ Page({
   },
 
   async onLoad() {
-    const res = await app.axios.post("mock/28/fvcms/mini/activity/list");
-    console.log(res);
-
-    this.infoListTouchEvent = infoListTouchEvent;
-    this.infoListTouchEvent.bind({//初始化后绑定事件
-      swipe: function (e) {
-        console.log("滑动");
-      },
-      rotate: function (e) {
-        console.log("旋转", e)
-      }.bind(this),
-      pinch: function (e) {
-        // console.log("捏");
-      }
-
-    })
+    // try {
+      const scope = await wxPro.authorize({ scope: "scope.userInfo" })
+      console.log("scope", scope)
+    const info = await wxPro.getUserInfo();
+      console.log(info);
+    // } catch {
+    //   console.log("e");
+    // }
     
   },
 
-  touchStart: infoListTouchEvent.start.bind(infoListTouchEvent),
-  touchMove: infoListTouchEvent.move.bind(infoListTouchEvent),
-  touchEnd: infoListTouchEvent.end.bind(infoListTouchEvent),
-  touchCancel: infoListTouchEvent.cancel.bind(infoListTouchEvent),
+  onFavoriteTap() {
+    wx.navigateTo({
+      url: '/pages/favorite/favorite',
+    })
+  }
 
 })

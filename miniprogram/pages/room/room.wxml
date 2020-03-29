@@ -1,0 +1,79 @@
+<!--miniprogram/pages/room/room.wxml-->
+<!-- 在模版上放置标签 -->
+<view class="page-room">
+
+  <trtc-room wx:if="{{currentVideo.type === 1}}" id="trtcroom" config="{{trtcConfig}}" catchpinch="onPinch" catchswipe="onSwipe" catchontap="onTap" catchmove="onMove" catchondoubletap="onDoubleTap"></trtc-room>
+
+  <!-- <image wx:if="{{currentVideo.type === 1 && isStop}}" class="play-icon" src="/images/icon_bofangliang.png"></image> -->
+
+  <video wx:if="{{currentVideo.type === 2}}" class="player" autoplay="{{true}}" controls="{{false}}" src="{{ currentVideo.pullStreamUrl }}"></video>
+
+  <view class="bottom-bar" wx:if="{{isShowBar}}">
+    <view class="bottom-bar-title">{{currentVideo.name}}</view>
+    <view class="bottom-bar-button">
+      <e-enhance-text icon='/images/icon_bofangliang.png' iconSize='50' textFontSize='30' text='{{currentVideo.playCount}}' textColor='#fff' />
+      <block wx:if="{{ currentVideo.stared }}">
+        <e-enhance-text icon='/images/icon_start_2.png' iconSize='50' textFontSize='30' text='{{currentVideo.starCount}}' textColor='#fff' catchtexttap="onFavoriteTap" />
+      </block>
+      <block wx:if="{{ !currentVideo.stared }}">
+        <e-enhance-text icon='/images/icon_shoucang.png' iconSize='50' textFontSize='30' text='{{currentVideo.starCount}}' textColor='#fff' catchtexttap="onFavoriteTap" />
+      </block>
+      <e-enhance-text icon='/images/icon_share.png' iconSize='50' textFontSize='30' text='分享' textColor='#fff' catchtexttap="onShareTap" />
+      <e-enhance-text wx:if="{{currentVideo.type === 2}}" icon='/images/icon_download.png' iconSize='50' textFontSize='30' text='{{downloadText}}' textColor='#fff' catchtexttap="onDownloadTap" />
+    </view>
+  </view>
+
+  <view wx:if="{{currentVideo.type === 2}}" class="back-button" style="top: {{ statusBarHeight }}">
+    <e-icon name="return" color='#fff' size='56rpx' catchicontap="onBackTap" />
+  </view>
+
+  <!-- <view class="share-warp" wx:if="{{ isShowShare }}" catchtap="onShareWarpTap"> -->
+  <view class="share-popup" wx:if="{{ isShowShare }}">
+    <view class="share-popup-title">
+      <view class="share-popup-title-line"></view>这么棒的视频，赶快分享给好友吧
+      <view class="share-popup-title-line"></view>
+    </view>
+    <view class="share-popup-content">
+      <button class="share-popup-content-box" open-type='share' catchtap="onFriendTap">
+        <image class="share-popup-image" src="/images/canvas.png"></image>
+        <view class="share-popup-content-text">微信好友</view>
+      </button>
+      <view class="share-popup-content-line"></view>
+      <view class="share-popup-content-box" catchtap="onCanvasTap">
+        <image class="share-popup-image" src="/images/wechart.png"></image>
+        <view class="share-popup-content-text">生成海报</view>
+      </view>
+    </view>
+  </view>
+  <!-- </view> -->
+
+  <view class="popup" wx:if="{{ isShowDialog }}">
+    <view class="popup-content">
+      <view class="popup-title">微信授权</view>
+      <view class="popup-desc">亲，保存到相册需要授权哦！</view>
+      <button class="popup-button" open-type="openSetting" bindopensetting="onOpenSetting">确定</button>
+    </view>
+  </view>
+
+  <painter palette="{{imgData}}" bindimgOK="onImgOK" bindimgErr="onImgErr" />
+
+  <block wx:if="{{ isAuthorization  }}">
+    <e-modal
+      isShow='{{ apiError.errorCode === PremitionError.NO_ACTIVE_PREMITION_1 || apiError.errorCode === PremitionError.NO_ACTIVE_PREMITION_2 }}'>
+      <text slot='content' style='color: #666; font-size: 30rpx'>{{ apiError.errorDesc }}</text>
+      <e-base-button
+        id='ok'
+        slot='bottom'
+        text='返回首页' 
+        theme='filling'
+        width='500'
+        height='80'
+        textSize='32'
+        color='#FE2C54'
+        radius='70'
+        catchbuttontap='onModalButtonTap'>
+      </e-base-button>
+    </e-modal>
+  </block>
+  <a-popup isShow="{{ isInit && !isAuthorization }}"></a-popup>
+</view>

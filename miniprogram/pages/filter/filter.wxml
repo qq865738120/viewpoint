@@ -1,8 +1,41 @@
 <!--miniprogram/pages/filter/filter.wxml-->
 <view class="filter-page">
-<e-checker
-  label='套餐'
-  theme='open'
-  catchselect='testTap'
-  list='{{ [ { id: "0", text: "官方标准套餐" }, { id: "1", text: "套餐1" }, { id: "2", text: "套餐2" }, { id: "3", text: "套餐3" }, { id: "4", text: "套餐4" } ] }}' />
+  <view class="content" style="height: {{ contentHeight }}">
+    <e-checker
+      label='视频类型'
+      labelSize='34'
+      labelColor='#fff'
+      itemSize='28'
+      itemColor='#fff'
+      selectColor='#FE2C54'
+      color="#333744"
+      list='{{videoList}}'
+      selected='{{activityType.type + ""}}'
+      bindselect='onVideoTap' />
+
+    <e-checker
+      cus='checker'
+      label='权限类型'
+      labelSize='34'
+      labelColor='#fff'
+      itemSize='28'
+      itemColor='#fff'
+      selectColor='#FE2C54'
+      color="#333744"
+      list='{{typeList}}'
+      selected='{{activityType.permissionType + ""}}'
+      bindselect='onPramTap' />
+  </view>
+
+  <e-base-button
+    text='保存' 
+    theme='filling'
+    width='690'
+    height='84'
+    textSize='32'
+    color='#FE2C54'
+    catchbuttontap='onSaveTap'
+    isLoading="{{activityListRes.isLoading}}">
+    <e-load-more loading='{{ activityListRes.isLoading ? "true" : "false" }}' loadingColor='#FE2C54' text='' />
+  </e-base-button>
 </view>

@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<e-transition name="slide-down" isShow='{{ isInit }}' duration='500'>
 <view class="index-page">
   <e-search
     catchonsearch='testTap'
@@ -7,7 +8,9 @@
     buttonText=''
     placeholder='请输入搜索内容'
     radius='10'
-    bgColor='#101119'>
+    bgColor='#101119'
+    catchonsearch='onSearch'
+    catchonclean='onclean'>
   </e-search>
 
   <e-enhance-view
@@ -20,44 +23,61 @@
     <view class="top-bar-left">
       <view class="top-bar-item" data-index="{{0}}" catchtap="onTopBarTap">
         <text class="top-bar-text {{topBarSelected === 0 && 'top-bar-text-select'}}">最热</text>
-        <image class="top-bar-icon" src="{{ topBarSelected === 0 ? '/images/icon_zuixin_2.png' : '/images/icon_zuixin.png' }}"></image>
+        <e-icon cus="top-bar-icon" name="{{ orderType[0] === 'desc' ? 'dropdown' : 'collapse' }}" size='28rpx' padding='5rpx' color='{{ topBarSelected === 0 ? "#fff" : "rgba(169, 169, 169, 1)" }}' />
       </view>
       <view class="top-bar-item" data-index="{{1}}" catchtap="onTopBarTap">
         <text class="top-bar-text {{topBarSelected === 1 && 'top-bar-text-select'}}">最新</text>
-        <image class="top-bar-icon" src="{{ topBarSelected === 1 ? '/images/icon_zuixin_2.png' : '/images/icon_zuixin.png' }}"></image>
+        <e-icon cus="top-bar-icon" name="{{ orderType[1] === 'desc' ? 'dropdown' : 'collapse' }}" size='28rpx' padding='5rpx' color='{{ topBarSelected === 1 ? "#fff" : "rgba(169, 169, 169, 1)" }}' />
       </view>
     </view>
-    <view class="top-bar-item">
+    <view class="top-bar-item" catchtap="onFilterTap">
         <text class="top-bar-text">筛选</text>
         <image class="top-bar-icon" src="/images/icon_shuaixuan.png"></image>
       </view>
   </e-enhance-view>
 
-  <scroll-view class="list">
-    <view class="list-item">
-      <image class="list-item-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583571783049&di=74abca9ad5aa245b449096fd33568807&imgtype=0&src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D1179872664%2C290201490%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D1280%26h%3D854"></image>
-      <text class="list-item-tit">APEX2020首发体验：无开孔一体化手机离我们还有多远</text>
-      <e-enhance-view type='betweenCenter'>
+  <scroll-view class="list" scroll-y style="height: {{ listHeight }}" bindscrolltolower="scrollToLower">
+    <view style="padding: 40rpx" wx:if="{{activityListRes.isLoading}}">
+      <e-loading type='doubleBounce' width='50' height='50' color='#666'/>
+    </view>
+    
+    <view class="list-item" wx:if="{{!activityListRes.isLoading}}" wx:for="{{ activityListRes.records }}" wx:key="activityId" data-activity="{{ item }}" catchtap="onGoMore">
+      <image class="list-item-img" lazy-load="{{true}}" src="{{ item.defaultVideoFirstFrameImgSrc }}"></image>
+      <text class="list-item-tit">{{ item.name }}</text>
+      <e-enhance-view type='betweenCenter' margin='30rpx 0 0'>
         <view class="list-item-left">
           <e-enhance-text
             icon='/images/icon_watch.png'
             iconSize='26'
             textFontSize='24'
-            text='10'
+            text='{{ item.totalPlayCount }}'
             textColor='#5E5E5E'
             cus='list-item-left-item'/>
           <e-enhance-text
             icon='/images/icon_start_1.png'
             iconSize='26'
             textFontSize='24'
-            text='16'
+            text='{{ item.totalStarCount }}'
             textColor='#5E5E5E' />
         </view>
-        <view class="list-item-right">
+        <view class="list-item-right" catchtap="onMoreTap">
           更多视频
           <image class="list-item-icon" src="/images/icon_more.png"></image>
         </view>
       </e-enhance-view>
     </view>
+
+    <view wx:if="{{ !activityListRes.isLoading }}">
+      <e-load-more textSize='24' textColor='#333' lineColor='#444' loadingColor='#FE2C54' loading='{{ isLoading ? "true" : "false" }}' text='{{ isLoading ? "加载中" : "没有更多内容了～" }}' cus='load-more' />
+    </view>
   </scroll-view>
+
+  <a-popup isShow="{{ isInit && !isAuthorization }}"></a-popup>
 </view>
+</e-transition>
+
+<e-transition name="slide-down" isShow='{{ !isInit }}' duration='300'>
+  <view style="margin: 15rpx 0; height: 100%">
+    <e-loading type='threeBounce' color='#FE2C54'/>
+  </view>
+</e-transition>

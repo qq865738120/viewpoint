@@ -1,0 +1,86 @@
+<!--miniprogram/pages/favorite/favorite.wxml-->
+<!-- <e-transition name="slide-down" isShow='{{ isInit }}' duration='500'> -->
+  <view class="more-page">
+    <e-search catchonsearch='testTap' bgColor='#fff' width='520' buttonText='' placeholder='请输入搜索内容' radius='10' bgColor='#101119' catchonsearch='onSearch' catchonclean='onclean'>
+    </e-search>
+
+    <scroll-view scroll-y class="list" style="height: {{ listHeight }}"  bindscrolltolower="scrollToLower">
+      <view style="padding: 40rpx" wx:if="{{videoListRes.isLoading}}">
+        <e-loading type='doubleBounce' width='50' height='50' color='#666'/>
+      </view>
+      <view wx:if="{{!videoListRes.isLoading}}" wx:for="{{ videoListRes.records }}" wx:key="id" data-video="{{item}}" catchtap="onVideoTap">
+        <view class="first" wx:if="{{ index === 0 }}">
+          <image class="first-image" lazy-load="{{true}}" src="{{ item.firstFrameImgSrc }}"></image>
+          <view class="first-text">{{ item.name }}</view>
+          <view class="item-right-bottom">
+              <e-enhance-text
+                icon='/images/icon_watch.png'
+                iconSize='26'
+                textFontSize='24'
+                text='{{ item.playCount }}'
+                textColor='#5E5E5E'
+                cus='item-right-bottom-item'/>
+              <e-enhance-text
+                icon='/images/icon_start_1.png'
+                iconSize='26'
+                textFontSize='24'
+                text='{{ item.starCount }}'
+                textColor='#5E5E5E' />
+            </view>
+        </view>
+        <view class="item" wx:if="{{ index > 0 }}">
+          <image class="item-image" lazy-load="{{true}}" src="{{ item.firstFrameImgSrc }}"></image>
+          <view class="item-right">
+            <view class="item-right-title">
+              {{ item.name }}
+            </view>
+            <view class="item-right-bottom">
+              <e-enhance-text
+                icon='/images/icon_watch.png'
+                iconSize='26'
+                textFontSize='24'
+                text='{{ item.playCount }}'
+                textColor='#5E5E5E'
+                cus='item-right-bottom-item'/>
+              <e-enhance-text
+                icon='/images/icon_start_1.png'
+                iconSize='26'
+                textFontSize='24'
+                text='{{ item.starCount }}'
+                textColor='#5E5E5E' />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ !videoListRes.isLoading }}">
+        <e-load-more textSize='24' textColor='#333' lineColor='#444' loadingColor='#FE2C54' loading='{{ isLoading ? "true" : "false" }}' text='{{ isLoading ? "加载中" : "没有更多内容了～" }}' cus='load-more' />
+      </view>
+    </scroll-view>
+  </view>
+<!-- </e-transition> -->
+
+<!-- <e-transition name="slide-down" isShow='{{ !isInit }}' duration='300'>
+  <view style="margin: 15rpx 0; height: 100%">
+    <e-loading type='threeBounce' color='#FE2C54'/>
+  </view>
+</e-transition> -->
+
+<block wx:if="{{ isAuthorization  }}">
+  <e-modal
+    isShow='{{ apiError.errorCode === PremitionError.NO_ACTIVE_PREMITION_1 || apiError.errorCode === PremitionError.NO_ACTIVE_PREMITION_2 }}'>
+    <text slot='content' style='color: #666; font-size: 30rpx'>{{ apiError.errorDesc }}</text>
+    <e-base-button
+      id='ok'
+      slot='bottom'
+      text='返回首页' 
+      theme='filling'
+      width='500'
+      height='80'
+      textSize='32'
+      color='#FE2C54'
+      radius='70'
+      catchbuttontap='onModalButtonTap'>
+    </e-base-button>
+  </e-modal>
+</block>
+<a-popup isShow="{{ isInit && !isAuthorization }}"></a-popup>

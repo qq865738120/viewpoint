@@ -1,0 +1,11 @@
+/* components/authorize_popup/authorize_popup.wxss */
+
+.button {
+  width: 600rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #FE2C54;
+}

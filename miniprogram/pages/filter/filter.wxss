@@ -1,1 +1,13 @@
 /* miniprogram/pages/filter/filter.wxss */
+
+.filter-page {
+  padding: 55rpx 30rpx 75rpx;
+}
+
+.content {
+  overflow-y: scroll;
+}
+
+.checker {
+  margin-top: 90rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "trtc-room": "/components/trtc-room/trtc-room",
+    "painter": "/components/painter/painter"
+  },
+  "navigationStyle": "custom",
+  "disableScroll": true
+}

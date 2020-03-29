@@ -1,7 +1,4 @@
 {
   "usingComponents": {
-    "e-search": "/components/easyUI/form/search/search",
-    "e-enhance-view": "/components/easyUI/base/enhance_view/enhance_view",
-    "e-enhance-text": "/components/easyUI/base/enhance_text/enhance_text"
   }
 }

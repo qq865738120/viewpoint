@@ -1,0 +1,11 @@
+<!--components/authorize_popup/authorize_popup.wxml-->
+<e-modal isShow='{{ isShow && mIsShow }}' title='微信授权'>
+  <text slot='content' style='color: #666; font-size: 30rpx;'>一键授权，观看更多精彩内容～</text>
+  <e-enhance-view
+    bgColor='#fff'
+    width='600'
+    type='center'
+    slot='bottom'>
+    <button class="button" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确定</button>
+  </e-enhance-view>
+</e-modal>

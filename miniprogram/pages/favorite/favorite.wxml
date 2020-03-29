@@ -1,0 +1,40 @@
+<!--miniprogram/pages/favorite/favorite.wxml-->
+<view class="favorite-page">
+  <e-search catchonsearch='testTap' bgColor='#fff' width='520' buttonText='' placeholder='请输入搜索内容' radius='10' bgColor='#101119' catchonsearch='onSearch' catchonclean='onclean'>
+  </e-search>
+
+  <scroll-view scroll-y class="list" style="height: {{ listHeight }}" bindscrolltolower="scrollToLower">
+    <view style="padding: 40rpx" wx:if="{{videoStarListRes.isLoading}}">
+      <e-loading type='doubleBounce' width='50' height='50' color='#666'/>
+    </view>
+    <view class="item" wx:if="{{!videoStarListRes.isLoading}}" wx:for="{{ videoStarListRes.records }}" wx:key="id" data-video="{{item}}" catchtap="onVideoTap">
+      <image class="item-image" lazy-load="{{true}}" src="{{ item.firstFrameImgSrc }}"></image>
+      <view class="item-right">
+        <view class="item-right-title">
+          {{ item.name }}
+        </view>
+        <view class="item-right-bottom">
+          <e-enhance-text
+            icon='/images/icon_watch.png'
+            iconSize='26'
+            textFontSize='24'
+            text='{{ item.playCount }}'
+            textColor='#5E5E5E'
+            cus='item-right-bottom-item'/>
+          <e-enhance-text
+            data-id="{{ item.id }}"
+            icon='/images/icon_start_2.png'
+            iconSize='26'
+            textFontSize='24'
+            text='{{ item.starCount }}'
+            textColor='#FE2C54'
+            catchtexttap="onStarTap" />
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{ !videoStarListRes.isLoading }}">
+      <e-load-more textSize='24' textColor='#333' lineColor='#444' loadingColor='#FE2C54' loading='{{ isLoading ? "true" : "false" }}' text='{{ isLoading ? "加载中" : "没有更多内容了～" }}' cus='load-more' />
+    </view>
+  </scroll-view>
+</view>

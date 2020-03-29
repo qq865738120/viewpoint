@@ -1,6 +1,0 @@
-<!--miniprogram/pages/test/test.wxml-->
-<painter palette="{{imgData}}" bindimgOK="onImgOK" bindimgErr="onImgErr" />
-<image src="{{img}}"></image>
-
- <live-player src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" style="width: 750rpx; height: 500rpx;" />
-  <cover-view class="cover-view" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindtouchcancel="touchCancel" />

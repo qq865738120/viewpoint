@@ -2,10 +2,26 @@
   "pages": [
     "pages/index/index",
     "pages/my/my",
-    "pages/test/test",
-    "pages/filter/filter"
+    "pages/filter/filter",
+    "pages/favorite/favorite",
+    "pages/more/more",
+    "pages/room/room"
   ],
+  "usingComponents": {
+    "e-search": "/components/easyUI/form/search/search",
+    "e-icon": "/components/easyUI/base/icon/icon",
+    "e-loading": "/components/easyUI/base/loading/loading",
+    "e-transition": "/components/easyUI/base/transition/transition",
+    "e-enhance-view": "/components/easyUI/base/enhance_view/enhance_view",
+    "e-enhance-text": "/components/easyUI/base/enhance_text/enhance_text",
+    "e-checker": "/components/easyUI/form/checker/checker",
+    "e-base-button": "/components/easyUI/button/base_button/base_button",
+    "e-modal": "/components/easyUI/senior/modal/modal",
+    "a-popup": "/components/authorize_popup/authorize_popup",
+    "e-load-more": "/components/easyUI/base/load_more/load_more"
+  },
   "window": {
+    "backgroundColor": "#161825",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#161825",
     "navigationBarTitleText": "自由视点",
@@ -30,6 +46,5 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }
