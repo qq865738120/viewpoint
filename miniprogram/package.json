@@ -15,7 +15,7 @@
     "axios": "^0.19.2",
     "axios-miniprogram-adapter": "^0.3.0",
     "minii": "^1.2.2",
-    "qs": "^6.9.1",
+    "qs": "^6.9.7",
     "regenerator-runtime": "^0.13.3",
     "wx-touch-event": "^1.0.1"
   }
